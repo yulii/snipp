@@ -1,5 +1,5 @@
 #!/bin/sh
-LIB_NAME="ratel"
+LIB_NAME="snipp"
 if [ $# -ne 1 ]
 then
 	echo "invalid VERSION"

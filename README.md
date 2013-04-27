@@ -1,4 +1,7 @@
 # Snipp
+[![Gem Version](https://badge.fury.io/rb/snipp.png)](http://badge.fury.io/rb/snipp)
+[![Coverage Status](https://coveralls.io/repos/yulii/snipp/badge.png?branch=master)](https://coveralls.io/r/yulii/snipp)
+[![Build Status](https://travis-ci.org/yulii/snipp.png)](https://travis-ci.org/yulii/snipp)
 
 TODO: Write a gem description
 

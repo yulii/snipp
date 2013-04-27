@@ -12,8 +12,13 @@ module Snipp
 
       bc = []
       paths.each do |e|
-        body = content_tag :span, I18n.t(e, i18n_options), itemprop: :title
-        bc.push link_to body, send("#{e}_path", options), itemprop: :url
+        if e.is_a?(Hash)
+          body = content_tag :span, e[:label], itemprop: :title
+          bc.push link_to body, e[:path], itemprop: :url
+        else
+          body = content_tag :span, I18n.t(e, i18n_options), itemprop: :title
+          bc.push link_to body, send("#{e}_path", options), itemprop: :url
+        end 
       end
       code = '<nav class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'
       code << bc.join(sepalator)

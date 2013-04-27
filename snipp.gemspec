@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["yulii"]
   gem.email         = ["yuliinfo@gmail.com"]
   gem.description   = %q{Structured Data Snippets}
-  gem.summary       = %q{Structured Data Snippets}
+  gem.summary       = %q{Let search engines understand the content on your website}
   gem.homepage      = "https://github.com/yulii/snipp"
 
   gem.files         = `git ls-files`.split($/)

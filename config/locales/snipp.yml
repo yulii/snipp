@@ -1,0 +1,9 @@
+en:
+  views:
+    breadcrumb:
+      # Sample
+      root: "Top"
+      food: "Food"
+      food_fruit: "Fruit"
+      food_fruit_red: "Red"
+      food_fruit_red_apple: "Apple"

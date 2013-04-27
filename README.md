@@ -6,19 +6,37 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'snipp'
-
+```ruby
+gem 'snipp'
+```
 And then execute:
-
-    $ bundle
-
+```sh
+$ bundle
+```
 Or install it yourself as:
-
-    $ gem install snipp
-
+```sh
+$ gem install snipp
+```
 ## Usage
+### Breadcrumbs
+```html+ruby
+<%= breadcrumb [:root, :food, :food_fruit, :food_fruit_red, :food_fruit_red_apple], s: "/" %>
+```
 
-TODO: Write usage instructions here
+link to `root_path`, `food_path`, `food_fruit_path`, `food_fruit_red`, `food_fruit_red_apple`
+
+Link text
+```yaml
+en:
+  views:
+    breadcrumb:
+      # Sample
+      root: "Top"
+      food: "Food"
+      food_fruit: "Fruit"
+      food_fruit_red: "Red"
+      food_fruit_red_apple: "Apple"
+```
 
 ## Contributing
 

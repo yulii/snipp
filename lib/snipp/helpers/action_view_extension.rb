@@ -15,7 +15,7 @@ module Snipp
         body = content_tag :span, I18n.t(e, i18n_options), itemprop: :title
         bc.push link_to body, send("#{e}_path", options), itemprop: :url
       end
-      code = '<nav itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'
+      code = '<nav class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'
       code << bc.join(sepalator)
 
       (paths.size - 1).times do

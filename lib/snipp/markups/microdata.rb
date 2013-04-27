@@ -8,7 +8,7 @@ module Snipp
   
         # options for i18n
         i18n_options = { scope: [:views, :breadcrumb] }
-        (options[:params]||[]).each do |e|
+        (options[:args]||[]).each do |e|
           i18n_options[e] = params[e]
         end
   

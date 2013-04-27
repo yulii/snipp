@@ -11,7 +11,7 @@
 <h2>Advanced</h2>
 <section id="case-B-1">
   <h3>Specify Parameters for URL (path) and i18n</h3>
-  <%= breadcrumb [:root, :foods, :fruits, :fruits_color, :food], s: "/", params: [:color, :name]  %>
+  <%= breadcrumb [:root, :foods, :fruits, :fruits_color, :food], s: "/", args: [:color, :name]  %>
 </section>
 <section id="case-B-2">
   <h3>Customize Variables</h3>
@@ -19,5 +19,5 @@
 </section>
 <section id="case-B-3">
   <h3>Customize Variables and Specify Parameters</h3>
-  <%= breadcrumb [:root, :foods, :fruits, { path: fruits_color_path, label: :fruits_color }, { path: food_path, label: :food }], s: "/", params: [:color, :name] %>
+  <%= breadcrumb [:root, :foods, :fruits, { path: fruits_color_path, label: :fruits_color }, { path: food_path, label: :food }], s: "/", args: [:color, :name] %>
 </section>

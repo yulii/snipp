@@ -5,12 +5,10 @@ describe Snipp do
 
   before do
     Snipp::Hooks.init
-    visit "/"
-    puts page.html
+    visit "/foods/fruits/Red/Apple"
   end
 
-  describe do
-    it { expect(true).to be_true }
+  it "should be no error" do
+    expect(page).to have_content("Breadcumbs - Rich Snippets Sample")
   end
-
 end

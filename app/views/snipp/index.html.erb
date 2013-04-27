@@ -1,3 +1,5 @@
 <h1>Rich Snippets Sample</h1>
 <h2>Breadcumb</h2>
-<%= breadcrumb [:root, :food, :food_fruit, :food_fruit_red, :food_fruit_red_apple], s: "/" %>
+<% = breadcrumb [:root, :foods, :fruits, :fruits_color, :food], s: "/", params: [:color, :name]  %>
+
+<% = breadcrumb [:root, :foods, :fruits, { path: fruits_color_path(:red), label: 'Red' }, { path: food_path(color: :red, name: :apple), label: 'Apple' }], s: "/" %>

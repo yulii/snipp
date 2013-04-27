@@ -38,6 +38,8 @@ en:
       food_fruit_red_apple: "Apple"
 ```
 
+more https://github.com/yulii/snipp/blob/master/app/views/snipp/index.html.erb
+
 ## Contributing
 
 1. Fork it

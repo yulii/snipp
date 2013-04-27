@@ -11,19 +11,14 @@ end
 app.initialize!
 
 # routing
-SNIPP_TYPES = [:breadcumb]
 app.routes.draw do
   get "/" =>"snipp#index" ,as: :root
 
-  SNIPP_TYPES.each do |e|
-    get "/e" => "index##{e}" ,as: e
-  end
-
   # for Breadcumb
-  get "/food"                 => "snipp#index", as: :food
-  get "/food/fruit"           => "snipp#index", as: :food_fruit
-  get "/food/fruit/red"       => "snipp#index", as: :food_fruit_red
-  get "/food/fruit/red/apple" => "snipp#index", as: :food_fruit_red_apple
+  get "/foods"                     => "snipp#breadcrumb", as: :foods
+  get "/foods/fruits"              => "snipp#breadcrumb", as: :fruits
+  get "/foods/fruits/:color"       => "snipp#breadcrumb", as: :fruits_color
+  get "/foods/fruits/:color/:name" => "snipp#breadcrumb", as: :food
 end
 
 # controllers
@@ -32,6 +27,8 @@ class ApplicationController < ActionController::Base ; end
 class SnippController < ApplicationController
 
   def index ; end
+
+  def breadcrumb ; end
 
 end
 

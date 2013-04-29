@@ -35,14 +35,13 @@ describe Snipp::Markup::Microdata do
         it "should have correct number of `itemprop` attribute that equals `child`" do
           within(e[:id]) { expect(page).to have_selector('[itemprop="child"][itemscope]', count: (e[:path].size - 1)) }
         end
-        it "should have correct number of `a[itemprop\"url\"]` tags" do
-          within(e[:id]) { expect(page).to have_selector('a[itemprop="url"]', count: e[:path].size) }
-        end
-        it "should have correct number of `span[itemprop\"title\"]` tags" do
-          within(e[:id]) { expect(page).to have_selector('span[itemprop="title"]', count: e[:path].size) }
-        end
         it "should have correct number of separators" do
           within(e[:id]) { expect(page).to have_content(e[:separator], count: (e[:path].size - 1)) }
+        end
+        ['[itemscope]', 'a[itemprop="url"]', 'span[itemprop="title"]'].each do |s|
+          it "should have correct number of `#{s}` tags" do
+            within(e[:id]) { expect(page).to have_selector(s, count: e[:path].size) }
+          end
         end
       end
     end
@@ -50,11 +49,10 @@ describe Snipp::Markup::Microdata do
     describe "a variety of ways to define breadcrumbs" do
       let(:html) { page.find("#case-B-1 nav").native.to_s }
 
-      it "should be equivalent" do
-        expect(page.find("#case-B-2 nav").native.to_s).to eq html
-      end
-      it "should be equivalent" do
-        expect(page.find("#case-B-3 nav").native.to_s).to eq html
+      ["#case-B-2", "#case-B-3"].each do |e|
+        it "should be equivalent" do
+          expect(page.find("#{e} nav").native.to_s).to eq html
+        end
       end
     end
   end

@@ -14,17 +14,13 @@ describe Snipp::Markup::Microdata do
   before do
     Snipp::Hooks.init
     visit "/geo"
-#    puts page.html
   end
 
   let(:itemtype) { "http://data-vocabulary.org/Geo" }
 
   shared_examples_for 'defined the latitude and longitude' do |e|
-    puts e
-#    within(e[:id]) do
-      it { expect(page).to have_selector('[itemprop="latitude"]', text: e[:latitude], count: 1) }
-      it { expect(page).to have_selector('[itemprop="longitude"]', text: e[:longitude], count: 1) }
-#    end
+    it { expect(page).to have_selector('[itemprop="latitude"]', text: e[:latitude], count: 1) }
+    it { expect(page).to have_selector('[itemprop="longitude"]', text: e[:longitude], count: 1) }
   end
 
   describe "geo" do

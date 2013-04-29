@@ -15,10 +15,10 @@ module Snipp
         bc = []
         paths.each do |e|
           if e.is_a?(Hash)
-            body = content_tag :span, I18n.t(e[:label], i18n_options.merge(default: e[:label])), itemprop: :title
+            body = item_tag :span, I18n.t(e[:label], i18n_options.merge(default: e[:label])), prop: :title
             bc.push link_to body, e[:path], itemprop: :url
           else
-            body = content_tag :span, I18n.t(e, i18n_options), itemprop: :title
+            body = item_tag :span, I18n.t(e, i18n_options), prop: :title
             bc.push link_to body, send("#{e}_path"), itemprop: :url
           end 
         end
@@ -35,7 +35,7 @@ module Snipp
 
       def geo latitude, longitude, options = {}
         item_tag :span, prop: :geo, scope: true, type: :geo, class: "geo" do
-          "#{content_tag :span, latitude, itemprop: :latitude}#{content_tag :span, longitude, itemprop: :longitude}".html_safe
+          "#{item_tag :span, latitude, prop: :latitude}#{item_tag :span, longitude, prop: :longitude}".html_safe
         end
       end
 

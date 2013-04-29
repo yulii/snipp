@@ -12,6 +12,7 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect    # disables `should`
   end
+  config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 end
 Capybara.configure do |config|

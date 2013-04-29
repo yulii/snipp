@@ -11,8 +11,12 @@ end
 app.initialize!
 
 # routing
+ITEMTYPES = [:index, :breadcrumb, :geo]
 app.routes.draw do
-  get "/" =>"snipp#index" ,as: :root
+
+  ITEMTYPES.each do |e|
+    get "/#{e}" => "snipp##{e}", as: e
+  end
 
   # for Breadcumb
   get "/foods"                     => "snipp#breadcrumb", as: :foods
@@ -26,9 +30,10 @@ class ApplicationController < ActionController::Base ; end
 
 class SnippController < ApplicationController
 
-  def index ; end
-
-  def breadcrumb ; end
+  ITEMTYPES.each do |e|
+    define_method e do
+    end
+  end
 
 end
 

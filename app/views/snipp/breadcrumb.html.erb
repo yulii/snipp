@@ -1,23 +1,23 @@
-<h1>Breadcumbs - Rich Snippets Sample</h1>
+<h1>Breadcrumb - Rich Snippets Sample</h1>
 <h2>Basic</h2>
 <section id="case-A-1">
-  <h3>Simple Breadcumb</h3>
-  <%= breadcrumb [:root, :foods, :fruits] %>
+  <h3>Simple Breadcrumb</h3>
+  <%= breadcrumb [:index, :foods, :fruits] %>
 </section>
 <section id="case-A-2">
   <h3>Designate separator</h3>
-  <%= breadcrumb [:root, :foods, :fruits], s: "/" %>
+  <%= breadcrumb [:index, :foods, :fruits], s: "/" %>
 </section>
 <h2>Advanced</h2>
 <section id="case-B-1">
   <h3>Specify Parameters for URL (path) and i18n</h3>
-  <%= breadcrumb [:root, :foods, :fruits, :fruits_color, :food], s: "/", args: [:color, :name]  %>
+  <%= breadcrumb [:index, :foods, :fruits, :fruits_color, :food], s: "/", args: [:color, :name]  %>
 </section>
 <section id="case-B-2">
   <h3>Customize Variables</h3>
-  <%= breadcrumb [:root, :foods, :fruits, { path: fruits_color_path('Red'), label: 'Red' }, { path: food_path(color: 'Red', name: 'Apple'), label: 'Apple' }], s: "/" %>
+  <%= breadcrumb [:index, :foods, :fruits, { path: fruits_color_path('Red'), label: 'Red' }, { path: food_path(color: 'Red', name: 'Apple'), label: 'Apple' }], s: "/" %>
 </section>
 <section id="case-B-3">
   <h3>Customize Variables and Specify Parameters</h3>
-  <%= breadcrumb [:root, :foods, :fruits, { path: fruits_color_path, label: :fruits_color }, { path: food_path, label: :food }], s: "/", args: [:color, :name] %>
+  <%= breadcrumb [:index, :foods, :fruits, { path: fruits_color_path, label: :fruits_color }, { path: food_path, label: :food }], s: "/", args: [:color, :name] %>
 </section>

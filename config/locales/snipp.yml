@@ -2,7 +2,7 @@ en:
   views:
     breadcrumb:
       # Sample
-      root: "Top"
+      index: "Top"
       foods: "Foods"
       fruits: "Fruits"
       fruits_color: "%{color}"

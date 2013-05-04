@@ -22,6 +22,7 @@ $ gem install snipp
 ```
 ## Usage
 Call `item_tag` like `content_tag`
+
 ```html+ruby
 <%= item_tag :div, scope: true, type: :review do %>
   <%= item_tag :span, 'Snipp', prop: :itemreviewd %>
@@ -32,7 +33,9 @@ Call `item_tag` like `content_tag`
   Rating: <%= item_tag :span, '4.5', prop: :rating %>
 <% end %>
 ```
+
 This would output
+
 ```html
 <div itemscope itemtype="http://data-vocabulary.org/Review">
   <span itemprop="itemreviewed">Snipp</span>
@@ -45,26 +48,40 @@ This would output
 ```
 
 ### Breadcrumbs
+1. Define naming routes. You can specify a name for any route using the :as option in Rails Application.
+2. Setup the Rails Application for Internationalization (i18n).
+3. Call `breadcrumb` method.
+
 ```html+ruby
-<%= breadcrumb [:root, :food, :food_fruit, :food_fruit_red, :food_fruit_red_apple], s: "/" %>
+<%= breadcrumb [:index, :foods, :fruits] %>
 ```
-
-link to `root_path`, `food_path`, `food_fruit_path`, `food_fruit_red`, `food_fruit_red_apple`
-
-Link text
+This would output something like `Top > Foods > Fruits`, if you will set labels in your `Rails.root/config/locales`
 ```yaml
 en:
   views:
     breadcrumb:
       # Sample
-      root: "Top"
-      food: "Food"
-      food_fruit: "Fruit"
-      food_fruit_red: "Red"
-      food_fruit_red_apple: "Apple"
+      index: "Top"
+      food: "Foods"
+      food_fruit: "Fruits"
+```
+Link to `root_path`, `food_path`, `food_fruit_path`.
+
+
+#### Change the separator
+Use the :s or :separator option.
+
+```html+ruby
+<%= breadcrumb [:index, :foods, :fruits], s: "/" %>
 ```
 
-For more information, read erb files in `app/view/snipp/`
+#### Use variables and Customize labels
+
+```html+ruby
+<%= breadcrumb [:index, :foods, :fruits, { path: fruits_color_path('Red'), label: 'Red' }, { path: food_path(color: 'Red', name: 'Apple'), label: 'Apple' }], s: "/" %>
+```
+
+For more information, read erb files in [`app/view/snipp/`](https://github.com/yulii/snipp/tree/master/app/views/snipp)
 
 ## Contributing
 

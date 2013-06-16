@@ -19,8 +19,8 @@ describe Snipp::Markup::Microdata do
   let(:itemtype) { "http://data-vocabulary.org/Geo" }
 
   shared_examples_for 'defined the latitude and longitude' do |e|
-    it { expect(page).to have_selector('[itemprop="latitude"]', text: e[:latitude], count: 1) }
-    it { expect(page).to have_selector('[itemprop="longitude"]', text: e[:longitude], count: 1) }
+    it { expect(page).to have_selector("[itemprop=\"latitude\"][content=\"#{e[:latitude]}\"]"   ,count: 1) }
+    it { expect(page).to have_selector("[itemprop=\"longitude\"][content=\"#{e[:longitude]}\"]" ,count: 1) }
   end
 
   describe "geo" do

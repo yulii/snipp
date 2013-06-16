@@ -34,8 +34,9 @@ module Snipp
       end 
 
       def geo latitude, longitude, options = {}
+        return unless latitude and longitude
         item_tag :span, prop: :geo, scope: true, type: :geo, class: "geo" do
-          "#{item_tag :span, latitude, prop: :latitude}#{item_tag :span, longitude, prop: :longitude}".html_safe
+          "#{item_tag :meta, nil, prop: :latitude, content: latitude}#{item_tag :meta, nil, prop: :longitude, content: longitude}".html_safe
         end
       end
 
@@ -49,7 +50,11 @@ module Snipp
         item_options = item_options options, escape if options
         tag_options  = tag_options  options, escape if options
         content = if block_given? then capture(&block) else content_or_options_with_block end
-         "<#{name}#{tag_options}#{item_options}>#{escape ? ERB::Util.h(content) : content}</#{name}>".html_safe
+        if content
+          "<#{name}#{tag_options}#{item_options}>#{escape ? ERB::Util.h(content) : content}</#{name}>".html_safe
+        else
+          "<#{name}#{tag_options}#{item_options} />".html_safe
+        end
       end
 
       def item_options options, escape = true

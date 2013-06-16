@@ -12,6 +12,7 @@ module Snipp
 
   class Configuration #:nodoc:
     include ActiveSupport::Configurable
+    config_accessor :root_url
     config_accessor :markup
 
     def param_name

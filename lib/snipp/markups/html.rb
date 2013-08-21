@@ -1,6 +1,6 @@
 module Snipp
   module Markup
-    module HTML
+    module Html
 
       def set_html_meta args, options = {}
         i18n_options = {

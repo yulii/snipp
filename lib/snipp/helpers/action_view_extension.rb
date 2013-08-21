@@ -3,7 +3,7 @@ module Snipp
 
     def self.included(base)
       # Include HTML meta module
-      base.send :include, Snipp::Markup::HTML
+      base.send :include, Snipp::Markup::Html
 
       # Include markup module
       name = "#{Snipp.config.markup}".camelize

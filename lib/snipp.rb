@@ -2,6 +2,7 @@ module Snipp
 end
 
 require 'snipp/config'
+require 'snipp/markups/html'
 require 'snipp/markups/microdata'
 require 'snipp/helpers/action_view_extension'
 require 'snipp/hooks'

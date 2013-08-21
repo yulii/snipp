@@ -12,8 +12,7 @@ module Snipp
 
   class Configuration #:nodoc:
     include ActiveSupport::Configurable
-    config_accessor :root_url
-    config_accessor :markup
+    config_accessor :root_url, :markup, :html_meta_tags
 
     def param_name
       config.param_name.respond_to?(:call) ? config.param_name.call : config.param_name
@@ -26,6 +25,21 @@ module Snipp
   end
 
   configure do |config|
-    config.markup  = :microdata
+    config.markup         = :microdata
+    config.html_meta_tags = {
+      title:       '',
+      description: '',
+      keywords:    '',
+      og: {
+        site_name:   '',
+        type:        'article',
+        title:       '',
+        description: '',
+        image:       ''
+      },
+      author:      '',
+      robots:      ['index,follow', 'noodp', 'noydir'],
+      viewport:    'width=device-width'
+    }
   end
 end

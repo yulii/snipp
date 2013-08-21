@@ -30,7 +30,7 @@ mv ${PKG_FILE} ./pkg
 case "$2" in
 	"install")
 		echo "[RUN] rake install pkg/${PKG_FILE}"
-		bundle exec rake install
+		bundle exec rake install --trace
 	;;
 	"deploy")
 		echo "[RUN] gem push pkg/${PKG_FILE}"

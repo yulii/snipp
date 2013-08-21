@@ -58,9 +58,9 @@ module Snipp
             result[property] = html_meta_contents(key, value, options)
           end
         else
-          result[property] = (content.blank? ? I18n.t(property, options.merge {
+          result[property] = content.blank? ? I18n.t(property, options.merge(
             default: I18n.t(property, scope: options[:default_scope], default: '')
-          }) : content)
+          )) : content
         end
         result
       end

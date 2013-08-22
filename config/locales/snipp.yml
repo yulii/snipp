@@ -1,5 +1,19 @@
 en:
+  default:
+    meta:
+      title: "Default Title"
+      description: "Default Description"
+      keywords: "Default Description"
+
   views:
+    snipp:
+      html:
+        meta:
+          title: "HTML Title -- %{value}"
+      breadcrumb:
+        meta:
+          title: "Snipp"
+          
     breadcrumb:
       # Sample
       index: "Top"
@@ -7,3 +21,4 @@ en:
       fruits: "Fruits"
       fruits_color: "%{color}"
       food: "%{name}"
+

@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = Snipp::VERSION
   gem.authors       = ["yulii"]
   gem.email         = ["yuliinfo@gmail.com"]
-  gem.description   = %q{Structured Data Snippets}
+  gem.description   = %q{Search Engine Optimization (SEO) helpers for Ruby on Rails}
   gem.summary       = %q{Let search engines understand the content on your website}
   gem.homepage      = "https://github.com/yulii/snipp"
 

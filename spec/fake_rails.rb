@@ -11,12 +11,15 @@ end
 app.initialize!
 
 # routing
-ITEMTYPES = [:index, :breadcrumb, :geo]
+ITEMTYPES = [:index, :html, :breadcrumb, :geo]
 app.routes.draw do
 
   ITEMTYPES.each do |e|
     get "/#{e}" => "snipp##{e}", as: e
   end
+
+  # HTML Meta Tags
+  get "/html" => "snipp#html", as: :html
 
   # for Breadcumb
   get "/foods"                     => "snipp#breadcrumb", as: :foods

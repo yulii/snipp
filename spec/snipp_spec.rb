@@ -18,7 +18,7 @@ describe Snipp do
         end
       end
       it "should have no errors when visits /#{e}" do
-        expect(page).to have_content("#{e.to_s.camelize} - Rich Snippets Sample")
+        expect(page).to have_content("#{e.to_s.camelize} - Snippets Sample")
       end
     end
   end

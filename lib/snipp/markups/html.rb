@@ -5,8 +5,7 @@ module Snipp
       def set_html_meta args, options = {}
         i18n_options = {
           scope: [:views, params[:controller], params[:action], :meta],
-          default_scope: [:default, :meta],
-          default: ''
+          default_scope: [:default, :meta]
         }.merge(options)
 
         link = args.delete(:link)
@@ -59,7 +58,7 @@ module Snipp
           end
         else
           result = content
-          result = I18n.t(property, options) if result.blank?
+          result = I18n.t(property, options.merge(default: '')) if result.blank?
           result = I18n.t(property, scope: options[:default_scope], default: '') if result.blank?
         end
         result

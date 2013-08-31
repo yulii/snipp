@@ -3,17 +3,27 @@ en:
     meta:
       title: "Default Title"
       description: "Default Description"
-      keywords: "Default Description"
+      keywords: "Default Keywords"
+      og:
+        site_name: "Snipp"
+        title: "Default Title for Open Graph"
+        description: "Default Description for Open Graph"
+        type: "website"
 
   views:
     snipp:
       html:
         meta:
           title: "HTML Title -- %{value}"
+          description: "Render from I18n"
+          page_title: "HTML Title -- %{value} Page %{page}"
+          og:
+            title: "Open Graph Title from I18n"
+
       breadcrumb:
         meta:
           title: "Snipp"
-          
+
     breadcrumb:
       # Sample
       index: "Top"

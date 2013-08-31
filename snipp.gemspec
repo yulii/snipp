@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Search Engine Optimization (SEO) helpers for Ruby on Rails}
   gem.summary       = %q{Let search engines understand the content on your website}
   gem.homepage      = "https://github.com/yulii/snipp"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

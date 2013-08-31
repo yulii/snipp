@@ -4,6 +4,7 @@ module Snipp
 
       def set_html_meta args, options = {}
         i18n_options = {
+          #scope: ([:views].push(*params[:controller].split('/')) << params[:action] << :meta),
           scope: [:views, params[:controller], params[:action], :meta],
           default_scope: [:default, :meta]
         }.merge(options)
@@ -11,8 +12,8 @@ module Snipp
         link = args.delete(:link)
         html_meta.merge!(link: link) if link
 
-        Snipp.config.html_meta_tags.merge(args).each do |name, content|
-          value = html_meta_contents(name, content, i18n_options)
+        Snipp.config.html_meta_tags.each do |name, content|
+          value = html_meta_contents(name, content, args[name], i18n_options)
           html_meta[name] = value unless value.blank?
         end
       end
@@ -40,24 +41,24 @@ module Snipp
         end
 
         meta_link.each do |rel, href|
-          result << tag(:link, :rel => rel, :href => href) unless href.blank?
+          result << tag(:link, rel: rel, href: href) unless href.blank?
         end
     
         result.blank? ? nil : result.html_safe
       end
 
-      private    
-      def html_meta_contents property, content, options = {}
+      private
+      def html_meta_contents property, content, arg, options = {}
         result = {}
         if content.is_a?(Hash)
+          opts = options.dup
+          opts[:scope]         << property
+          opts[:default_scope] << property
           content.each do |key, value|
-            options = options.dup
-            options[:scope]         << property
-            options[:default_scope] << property
-            result[key] = html_meta_contents(key, value, options)
+            result[key] = html_meta_contents(key, value, (arg ? arg[key] : nil), opts)
           end
         else
-          result = content
+          result = arg||content
           result = I18n.t(property, options.merge(default: '')) if result.blank?
           result = I18n.t(property, scope: options[:default_scope], default: '') if result.blank?
         end
@@ -75,7 +76,7 @@ module Snipp
             if c.is_a?(Hash)
               result << build_meta_property_tags(property, c)
             else
-              result << tag(:meta, :property => "#{property}", :content => c) unless c.blank?
+              result << tag(:meta, property: "#{property}", content: c) unless c.blank?
             end
           end
         end

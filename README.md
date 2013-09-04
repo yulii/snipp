@@ -10,23 +10,15 @@ Search Engine Optimization (SEO) helpers for Ruby on Rails
 - Rich snippets and structured data
 
 ## Installation
-
-Add this line to your application's Gemfile:
+Add the "snipp" to your application's Gemfile:
 
 ```ruby
 gem 'snipp'
 ```
-And then execute:
-```sh
-$ bundle
-```
-Or install it yourself as:
-```sh
-$ gem install snipp
-```
-## Usage
-### HTML Meta Tags
-Call `html_meta_tags` in an view template
+And run `bundle install` command.
+
+## HTML Meta Tags
+Call `html_meta_tags` in a view template.
 ```html+ruby
 <!DOCTYPE html>
 <html>
@@ -39,8 +31,15 @@ Call `html_meta_tags` in an view template
   ...
 ```
 
-#### Contents
-direct set
+### Set content attribute values
+The priority of setting values
+1. Call `set_html_meta` 
+2. Use I18n dictionary (controller action scope)
+3. Use I18n dictionary (default scope)
+4. Set Snipp.config.html_meta_tags
+
+#### Use helper
+Call `set_html_meta` in a view.
 ```ruby
 set_html_meta({
   title: "Page Title",
@@ -57,7 +56,8 @@ set_html_meta({
 })
 ```
 
-controller/action
+#### User I18n dictionary files
+for each controller action
 ```ruby
 I18n.t(:title, scope: [:views, params[:controller], params[:action], :meta])
 ```
@@ -72,7 +72,7 @@ For more information
 - read locale files in [`config/locales`](https://github.com/yulii/snipp/tree/master/app/views/snipp)
 
 
-### Rich Snippets
+## Rich Snippets
 Call `item_tag` like `content_tag`
 
 ```html+ruby
@@ -99,7 +99,7 @@ This would output
 </div>
 ```
 
-#### Breadcrumbs
+### Breadcrumbs
 1. Define naming routes. You can specify a name for any route using the :as option in Rails Application.
 2. Setup the Rails Application for Internationalization (i18n).
 3. Call `breadcrumb` method.
@@ -120,14 +120,14 @@ en:
 Link to `root_path`, `food_path`, `food_fruit_path`.
 
 
-##### Change the separator
+#### Change the separator
 Use the :s or :separator option.
 
 ```html+ruby
 <%= breadcrumb [:index, :foods, :fruits], s: "/" %>
 ```
 
-##### Use variables and Customize labels
+#### Use variables and Customize labels
 
 ```html+ruby
 <%= breadcrumb [:index, :foods, :fruits, { path: fruits_color_path('Red'), label: 'Red' }, { path: food_path(color: 'Red', name: 'Apple'), label: 'Apple' }], s: "/" %>

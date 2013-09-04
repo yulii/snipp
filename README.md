@@ -33,6 +33,7 @@ Call `html_meta_tags` in a view template.
 
 ### Set content attribute values
 The priority of setting values
+
 1. Call `set_html_meta` 
 2. Use I18n dictionary (controller action scope)
 3. Use I18n dictionary (default scope)

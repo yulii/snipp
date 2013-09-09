@@ -4,8 +4,7 @@ module Snipp
 
       def set_html_meta args, options = {}
         i18n_options = {
-          #scope: ([:views].push(*params[:controller].split('/')) << params[:action] << :meta),
-          scope: [:views, params[:controller], params[:action], :meta],
+          scope: (([:views] + params[:controller].split('/')) << params[:action] << :meta),
           default_scope: [:default, :meta]
         }.merge(options)
 
@@ -15,6 +14,16 @@ module Snipp
         Snipp.config.html_meta_tags.each do |name, content|
           value = html_meta_contents(name, content, args[name], i18n_options)
           html_meta[name] = value unless value.blank?
+        end
+      end
+
+      def set_html_meta! args
+        @html_meta = {}
+        link = args.delete(:link)
+        html_meta.merge!(link: link) if link
+
+        args.each do |name, content|
+          html_meta[name] = html_meta_contents(name, content, content, {}) if content
         end
       end
 

@@ -8,7 +8,7 @@ en:
         site_name: "Snipp"
         title: "Default Title for Open Graph"
         description: "Default Description for Open Graph"
-        type: "website"
+        type: "article"
 
   views:
     snipp:
